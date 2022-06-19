@@ -6,6 +6,7 @@ import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-s
 
 import { wrapper as PopperWrapper } from 'components/Popper';
 import { AccountItem } from 'components/AccountItem';
+import Button from 'components/Button';
 
 import styles from './Header.module.scss';
 import images from 'assets/images';
@@ -27,7 +28,7 @@ function Header() {
         <img src={images.logo} alt="logo" />
         <Tippy
           interactive
-          visible={searchResult.length === 0}
+          visible={searchResult.length > 0}
           render={(attrs) => (
             <div className={cx('search-result')} tabIndex="-1" {...attrs}>
               <PopperWrapper>
@@ -52,7 +53,10 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx('actions')}></div>
+        <div className={cx('actions')}>
+          <Button text>Upload</Button>
+          <Button primary>Log in</Button>
+        </div>
       </div>
     </header>
   );
